@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ProjectForm = ({ onSubmit, onClose }) => {
   const [title, setTitle] = useState("");
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title.trim()) return;
@@ -12,11 +12,11 @@ const ProjectForm = ({ onSubmit, onClose }) => {
   };
 
   return (
-    <div className="project-form">
-      <form onSubmit={handleSubmit}>
+    <div className="bg-slate-600 p-4 rounded flex flex-col gap-10">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="form-group">
-          <label htmlFor="projectTitle">Project Title:</label>
           <input
+            className="p-4 border border-gray-300 rounded mt-2"
             type="text"
             id="projectTitle"
             value={title}
@@ -25,7 +25,7 @@ const ProjectForm = ({ onSubmit, onClose }) => {
             autoFocus
           />
         </div>
-        <div className="form-actions">
+        <div className="flex justify-between">
           <button type="submit">Add Project</button>
           <button type="button" onClick={onClose}>
             Cancel
@@ -36,4 +36,4 @@ const ProjectForm = ({ onSubmit, onClose }) => {
   );
 };
 
-export default ProjectForm;
+export { ProjectForm };

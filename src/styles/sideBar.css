@@ -22,4 +22,6 @@
   background-color: #333;
   color: #fff;
   cursor: pointer;
+  width: 9em;
+  height: auto;
 }
