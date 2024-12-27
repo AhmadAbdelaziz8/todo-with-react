@@ -1,4 +1,5 @@
-const ProjectContainer = ({ projects }) => {
+/* eslint-disable react/prop-types */
+const ProjectContainer = ({ projects, setSelectedProject }) => {
   if (!projects || projects.length === 0) {
     return (
       <div className="project-container">
@@ -10,7 +11,11 @@ const ProjectContainer = ({ projects }) => {
   return (
     <div className="project-container">
       {projects.map((project) => (
-        <div className="project" key={project.id}>
+        <div
+          className="project"
+          key={project.id}
+          onClick={() => setSelectedProject(project)}
+        >
           <h3>{project.title}</h3>
         </div>
       ))}

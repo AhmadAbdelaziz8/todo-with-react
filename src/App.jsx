@@ -5,11 +5,13 @@ import Content from "./components/content.jsx";
 import "./App.css";
 
 function App() {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   return (
     <>
       <Header />
-      <Sidebar />
-      <Content />
+      <Sidebar setSelectedProject={setSelectedProject} />
+      <Content project={selectedProject} />
     </>
   );
 }

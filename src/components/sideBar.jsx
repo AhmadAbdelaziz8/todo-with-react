@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import "../styles/sideBar.css";
 import { ProjectForm } from "./projectForm";
 import { ProjectContainer } from "./projects";
 
-const Sidebar = () => {
+const Sidebar = ({setSelectedProject}) => {
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [projects, setProjects] = useState([]);
 
@@ -27,6 +28,7 @@ const Sidebar = () => {
         <button className="nav-button">
           <i className="fas fa-calendar-day"></i> Today
         </button>
+        
         <button className="nav-button">
           <i className="fas fa-calendar-week"></i> This Week
         </button>
@@ -44,7 +46,10 @@ const Sidebar = () => {
             onClose={toggleProjectForm}
           />
         )}
-        <ProjectContainer projects={projects} />
+        <ProjectContainer
+          projects={projects}
+          setSelectedProject={setSelectedProject}
+        />
       </div>
     </div>
   );
