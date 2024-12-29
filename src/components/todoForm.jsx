@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TodoForm = ({ addTodo }) => {
+const TodoForm = ({ addTodo, setShowForm }) => {
   const [todo, setTodo] = useState({
     title: "",
     description: "",
@@ -15,7 +15,7 @@ const TodoForm = ({ addTodo }) => {
 
     const newTodo = {
       ...todo,
-      id: crypto.randomUUID(), 
+      id: crypto.randomUUID(),
       status: "pending",
     };
 
@@ -29,6 +29,8 @@ const TodoForm = ({ addTodo }) => {
       id: "",
       status: "",
     });
+
+    setShowForm(false);
   };
 
   const handleChange = (e) => {

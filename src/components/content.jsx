@@ -20,7 +20,7 @@ const Content = ({ project, setSelectedProject, projects, setProjects }) => {
         return p;
       })
     );
-    // setSelectedProject(project);
+    setSelectedProject(project);
   };
 
   const toggleForm = () => {
@@ -33,7 +33,7 @@ const Content = ({ project, setSelectedProject, projects, setProjects }) => {
         <button onClick={toggleForm}>
           {showForm ? "Close Form" : "Add Todo"}
         </button>
-        {showForm && <TodoForm addTodo={addTodo} />}
+        {showForm && <TodoForm addTodo={addTodo} setShowForm={setShowForm} />}
         <Todo todoList={project.todoList} />
       </div>
     </>
