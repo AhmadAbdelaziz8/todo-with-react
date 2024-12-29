@@ -1,8 +1,19 @@
-// eslint-disable-next-line react/prop-types
+import Todo from "./todo";
+import TodoForm from "./todoForm";
+import { useState } from "react";
+
 const Content = ({ project }) => {
+  const [showForm, setShowForm] = useState(true);
+  // function addTodo(title, description, dueDate, priority) {
+  //   project.todoList.push({
+  //     title,  });
+  // }
   return project !== null ? (
     <div>
-      <h1>{project.title}</h1>
+      <>
+        <Todo todoList={project.todoList} />
+        {showForm && <TodoForm />}
+      </>
     </div>
   ) : (
     <h1>No project selected</h1>

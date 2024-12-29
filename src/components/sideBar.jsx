@@ -4,12 +4,12 @@ import "../styles/sideBar.css";
 import { ProjectForm } from "./projectForm";
 import { ProjectContainer } from "./projects";
 
-const Sidebar = ({setSelectedProject}) => {
+const Sidebar = ({ setSelectedProject }) => {
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [projects, setProjects] = useState([]);
 
   const handleAddProject = (title) => {
-    const newProject = { title, id: crypto.randomUUID() }; // Or use uuid
+    const newProject = { title, id: crypto.randomUUID(), todoList: [] }; // Or use uuid
     setProjects([...projects, newProject]);
     console.log(projects);
   };
@@ -28,7 +28,7 @@ const Sidebar = ({setSelectedProject}) => {
         <button className="nav-button">
           <i className="fas fa-calendar-day"></i> Today
         </button>
-        
+
         <button className="nav-button">
           <i className="fas fa-calendar-week"></i> This Week
         </button>
