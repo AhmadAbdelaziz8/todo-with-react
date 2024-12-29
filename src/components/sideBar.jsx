@@ -4,9 +4,8 @@ import "../styles/sideBar.css";
 import { ProjectForm } from "./projectForm";
 import { ProjectContainer } from "./projects";
 
-const Sidebar = ({ setSelectedProject }) => {
+const Sidebar = ({ setSelectedProject, projects, setProjects }) => {
   const [showProjectForm, setShowProjectForm] = useState(false);
-  const [projects, setProjects] = useState([]);
 
   const handleAddProject = (title) => {
     const newProject = { title, id: crypto.randomUUID(), todoList: [] }; // Or use uuid

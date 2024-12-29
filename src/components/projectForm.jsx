@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-/* eslint-disable */
 const ProjectForm = ({ onSubmit, onClose }) => {
   const [title, setTitle] = useState("");
 
@@ -36,6 +35,5 @@ const ProjectForm = ({ onSubmit, onClose }) => {
     </div>
   );
 };
-/* eslint-enable */
 
 export { ProjectForm };

@@ -6,12 +6,22 @@ import "./App.css";
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [projects, setProjects] = useState([]);
 
   return (
     <>
       <Header />
-      <Sidebar setSelectedProject={setSelectedProject} />
-      <Content project={selectedProject} />
+      <Sidebar
+        setSelectedProject={setSelectedProject}
+        projects={projects}
+        setProjects={setProjects}
+      />
+      <Content
+        project={selectedProject}
+        setSelectedProject={setSelectedProject}
+        projects={projects}
+        setProjects={setProjects}
+      />
     </>
   );
 }

@@ -12,9 +12,12 @@ const ProjectContainer = ({ projects, setSelectedProject }) => {
     <div className="project-container">
       {projects.map((project) => (
         <div
-          className="project"
+          className="cursor-pointer bg-black text-200 p-2 m-2"
           key={project.id}
-          onClick={() => setSelectedProject(project)}
+          onClick={() => {
+            console.log("test");
+            setSelectedProject(project);
+          }}
         >
           <h3>{project.title}</h3>
         </div>
