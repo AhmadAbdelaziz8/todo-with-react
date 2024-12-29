@@ -9,17 +9,18 @@ const ProjectContainer = ({ projectState, setProjectState }) => {
   }
 
   return (
-    <div className="project-container">
+    <div className="space-y-2">
       {projectState.projects.map((project) => (
-        <div
-          className="cursor-pointer bg-black text-200 p-2 m-2"
+        <button
           key={project.id}
           onClick={() => {
             setProjectState({ ...projectState, selectedProject: project });
           }}
+          className="flex items-center justify-between w-full p-2 bg-gray-700 text-white rounded hover:bg-gray-600"
         >
-          <h3>{project.title}</h3>
-        </div>
+          <span>{project.title}</span>
+          <i className="fas fa-chevron-right"></i>
+        </button>
       ))}
     </div>
   );

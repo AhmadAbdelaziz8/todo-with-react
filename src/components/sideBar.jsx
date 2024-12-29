@@ -20,25 +20,27 @@ const handleAddProject = (title) => {
   };
 
   return (
-    <div className="col-start-1 col-end-2 row-start-1 row-end-3 flex flex-col bg-gray-800 text-white p-4">
+    <div className="bg-base-300 text-base-content p-4">
       {/* Navigation Section */}
-      <div className="navigation-section">
-        <button className="nav-button">
+      <div className="space-y-2">
+        <button className="flex w-full items-center gap-2 p-2 rounded hover:bg-neutral">
           <i className="fas fa-inbox"></i> Inbox
         </button>
-        <button className="nav-button">
+        <button className="flex w-full items-center gap-2 p-2 rounded hover:bg-neutral">
           <i className="fas fa-calendar-day"></i> Today
         </button>
-
-        <button className="nav-button">
+        <button className="flex w-full items-center gap-2 p-2 rounded hover:bg-neutral">
           <i className="fas fa-calendar-week"></i> This Week
         </button>
       </div>
 
       {/* Projects Section */}
-      <div className="flex flex-col items-center gap-4">
-        <h2 className="font-bold text-slate-200">Your Projects</h2>
-        <button className="add-project-button" onClick={toggleProjectForm}>
+      <div className="mt-4 space-y-2">
+        <h2 className="text-xl font-bold text-center">Your Projects</h2>
+        <button
+          className="flex items-center justify-center gap-2 p-2 bg-secondary text-secondary-content rounded hover:bg-secondary-focus"
+          onClick={toggleProjectForm}
+        >
           <i className="fas fa-plus"></i> Add Project
         </button>
         {showProjectForm && (
