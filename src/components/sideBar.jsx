@@ -4,15 +4,13 @@ import "../styles/sideBar.css";
 import { ProjectForm } from "./projectForm";
 import { ProjectContainer } from "./projects";
 
-const Sidebar = ({ projectState, setProjectState }) => {
+const Sidebar = ({ setSelectedProject, projects, setProjects }) => {
   const [showProjectForm, setShowProjectForm] = useState(false);
 
-const handleAddProject = (title) => {
-    const newProject = { title, id: crypto.randomUUID(), todoList: [] };
-    setProjectState((prevProjectState) => ({
-      ...prevProjectState,
-      projects: [...prevProjectState.projects, newProject],
-    }));
+  const handleAddProject = (title) => {
+    const newProject = { title, id: crypto.randomUUID(), todoList: [] }; // Or use uuid
+    setProjects([...projects, newProject]);
+    console.log(projects);
   };
 
   const toggleProjectForm = () => {
@@ -20,27 +18,25 @@ const handleAddProject = (title) => {
   };
 
   return (
-    <div className="bg-base-300 text-base-content p-4">
+    <div className="col-start-1 col-end-2 row-start-1 row-end-3 flex flex-col bg-gray-800 text-white p-4">
       {/* Navigation Section */}
-      <div className="space-y-2">
-        <button className="flex w-full items-center gap-2 p-2 rounded hover:bg-neutral">
+      <div className="navigation-section">
+        <button className="nav-button">
           <i className="fas fa-inbox"></i> Inbox
         </button>
-        <button className="flex w-full items-center gap-2 p-2 rounded hover:bg-neutral">
+        <button className="nav-button">
           <i className="fas fa-calendar-day"></i> Today
         </button>
-        <button className="flex w-full items-center gap-2 p-2 rounded hover:bg-neutral">
+
+        <button className="nav-button">
           <i className="fas fa-calendar-week"></i> This Week
         </button>
       </div>
 
       {/* Projects Section */}
-      <div className="mt-4 space-y-2">
-        <h2 className="text-xl font-bold text-center">Your Projects</h2>
-        <button
-          className="flex items-center justify-center gap-2 p-2 bg-secondary text-secondary-content rounded hover:bg-secondary-focus"
-          onClick={toggleProjectForm}
-        >
+      <div className="flex flex-col items-center gap-4">
+        <h2 className="font-bold text-slate-200">Your Projects</h2>
+        <button className="add-project-button" onClick={toggleProjectForm}>
           <i className="fas fa-plus"></i> Add Project
         </button>
         {showProjectForm && (
@@ -49,7 +45,10 @@ const handleAddProject = (title) => {
             onClose={toggleProjectForm}
           />
         )}
-        <ProjectContainer projectState={projectState} setProjectState={setProjectState} />
+        <ProjectContainer
+          projects={projects}
+          setSelectedProject={setSelectedProject}
+        />
       </div>
     </div>
   );

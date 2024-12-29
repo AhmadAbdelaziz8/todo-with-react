@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-const ProjectContainer = ({ projectState, setProjectState }) => {
-  if (!projectState.projects || projectState.projects.length === 0) {
+const ProjectContainer = ({ projects, setSelectedProject }) => {
+  if (!projects || projects.length === 0) {
     return (
       <div className="project-container">
         <p>No projects yet</p>
@@ -9,18 +9,18 @@ const ProjectContainer = ({ projectState, setProjectState }) => {
   }
 
   return (
-    <div className="space-y-2">
-      {projectState.projects.map((project) => (
-        <button
+    <div className="project-container">
+      {projects.map((project) => (
+        <div
+          className="cursor-pointer bg-black text-200 p-2 m-2"
           key={project.id}
           onClick={() => {
-            setProjectState({ ...projectState, selectedProject: project });
+            console.log("test");
+            setSelectedProject(project);
           }}
-          className="flex items-center justify-between w-full p-2 bg-gray-700 text-white rounded hover:bg-gray-600"
         >
-          <span>{project.title}</span>
-          <i className="fas fa-chevron-right"></i>
-        </button>
+          <h3>{project.title}</h3>
+        </div>
       ))}
     </div>
   );
