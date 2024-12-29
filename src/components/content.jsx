@@ -2,39 +2,33 @@ import Todo from "./todo";
 import TodoForm from "./todoForm";
 import { useState } from "react";
 
-const Content = ({ project, setSelectedProject, projects, setProjects }) => {
+const Content = ({ projectState, setProjectState }) => {
   const [showForm, setShowForm] = useState(false);
 
-  // Function to add a new todo
   const addTodo = (newTodo) => {
-    setProjects(
-      projects.map((p) => {
-        // find the project that matches the current project
-        if (p.id === project.id) {
-          // Add the new todo to the project
-          return {
-            ...p,
-            todoList: [...p.todoList, newTodo],
-          };
-        }
-        return p;
-      })
-    );
-    setSelectedProject(project);
+    setProjectState((prevProjectState) => ({
+      ...prevProjectState,
+      projects: prevProjectState.projects.map((p) =>
+        p.id === projectState.selectedProject.id
+          ? { ...p, todoList: [...p.todoList, newTodo] }
+          : p
+      ),
+    }));
   };
 
-  const toggleForm = () => {
+const toggleForm = () => {
     setShowForm(!showForm);
   };
-  return project !== null ? (
+
+  return projectState.selectedProject !== null ? (
     <>
       <div>
-        <h1>{project.title}</h1>
+        <h1>{projectState.selectedProject.title}</h1>
         <button onClick={toggleForm}>
-          {showForm ? "Close Form" : "Add Todo"}
+          {showForm ? 'Close Form' : 'Add Todo'}
         </button>
         {showForm && <TodoForm addTodo={addTodo} setShowForm={setShowForm} />}
-        <Todo todoList={project.todoList} />
+        <Todo todoList={projectState.selectedProject.todoList} />
       </div>
     </>
   ) : (

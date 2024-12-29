@@ -4,13 +4,15 @@ import "../styles/sideBar.css";
 import { ProjectForm } from "./projectForm";
 import { ProjectContainer } from "./projects";
 
-const Sidebar = ({ setSelectedProject, projects, setProjects }) => {
+const Sidebar = ({ projectState, setProjectState }) => {
   const [showProjectForm, setShowProjectForm] = useState(false);
 
-  const handleAddProject = (title) => {
-    const newProject = { title, id: crypto.randomUUID(), todoList: [] }; // Or use uuid
-    setProjects([...projects, newProject]);
-    console.log(projects);
+const handleAddProject = (title) => {
+    const newProject = { title, id: crypto.randomUUID(), todoList: [] };
+    setProjectState((prevProjectState) => ({
+      ...prevProjectState,
+      projects: [...prevProjectState.projects, newProject],
+    }));
   };
 
   const toggleProjectForm = () => {
@@ -45,10 +47,7 @@ const Sidebar = ({ setSelectedProject, projects, setProjects }) => {
             onClose={toggleProjectForm}
           />
         )}
-        <ProjectContainer
-          projects={projects}
-          setSelectedProject={setSelectedProject}
-        />
+        <ProjectContainer projectState={projectState} setProjectState={setProjectState} />
       </div>
     </div>
   );

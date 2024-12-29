@@ -5,23 +5,16 @@ import Content from "./components/content.jsx";
 import "./App.css";
 
 function App() {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [projects, setProjects] = useState([]);
+  const [projectState, setProjectState] = useState({
+    selectedProject: null,
+    projects: [],
+  });
 
   return (
     <>
       <Header />
-      <Sidebar
-        setSelectedProject={setSelectedProject}
-        projects={projects}
-        setProjects={setProjects}
-      />
-      <Content
-        project={selectedProject}
-        setSelectedProject={setSelectedProject}
-        projects={projects}
-        setProjects={setProjects}
-      />
+      <Sidebar projectState={projectState} setProjectState={setProjectState} />
+      <Content projectState={projectState} setProjectState={setProjectState} />
     </>
   );
 }
